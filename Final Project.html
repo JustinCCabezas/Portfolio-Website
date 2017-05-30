@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<link rel="stylesheet" type="text/css"
+			  href= "style4.css">
+	<link rel="icon"
+      type="image/png"
+      href="Antikythera mechanism.jpg" />
+      <title>Final Project</title>
+	</head>	
+	<body>
+		<!-- BEGIN NAVIGATION BAR -->
+			<ul id="navbar">
+				<li class ="navitem"><a href="Hobby Website.html">Hobby Website</a></li>
+				<li class ="navitem"><a href="Bonsai Art.html">Bonsai Art</a></li>
+				<li class ="navitem"><a href="Dream Vacation.html">Dream Vacation</a></li>
+				<li class ="navitem"><a href="Scratch Game_Story.html">Scratch Game_Story</a></li>
+				<li class ="navitem"><a href="Python Select-A-Path Adventure.html">Python Select-A-Path Adventure</a></li>
+				<li class ="navitem"><a href="Image Artist.html">Image Artist</a></li>
+				<li class ="navitem"><a class="active" href="Final Project.html">Final Project</a></li>
+			</ul>
+	    <!-- END NAVIGATION BAR -->
+	    <div id="main">
+	    <h1>Final Project</h1>
+	    <img src="17-13854.jpg" width=264 hiegth=230>
+	    <img src="Screen Shot 2017-05-09 at 8.43.24 AM.jpg" width=264 hiegth=230>
+	    <img src="Alaska-Landscape-2.jpg" width=264 hiegth=230>
+	    <img src="Screen Shot 2017-05-09 at 8.41.43 AM.jpg" width=264 hiegth=230>
+	    <img src="fall-2011-320.jpg" width=264 hiegth=230>
+	    <img src="Screen Shot 2017-05-09 at 8.27.29 AM.jpg" width=264 hiegth=230>	
+	    <p># -*- coding: utf-8 -*-
+			'''
+			JDoe_JSmith_1_4_3: Change pixels in an image.
+			'''
+			import matplotlib.pyplot as plt 
+			import os.path
+			import numpy as np      # “as” lets us use standard abbreviations          
+			import PIL
+
+			'''Read the image data'''
+			# Get the directory of this python script
+			directory = os.path.dirname(os.path.abspath(__file__)) 
+			# Build an absolute filename from directory + filename
+			filename = os.path.join(directory, '17-13854 (1).jpg')
+			# Read the image data into an array
+			img = plt.imread(filename)
+			###
+			# Make a rectangle of pixels yellow
+			###
+
+			height = len(img)
+			width = len(img[0])
+
+    
+    		#np.dot(rgb[...,:3], [0.299, 0.587, 0.114])
+    
+			###
+			# Change a region if condition is True
+			###      
+                                
+			for row in range(0, height):
+        	for column in range(0, width):
+            r,g,b = img[row][column] #gets the r,g,b values from the pixel
+            r = int(r)
+            g = int(g)
+            b = int(b)
+            grayNumber = (r + g + b)/3
+            if r < 200:
+                r = grayNumber
+            if b < 200:
+                 b = grayNumber
+            if r + g + b < 30:
+                r = 10
+                g = 20
+                b = 30
+            img[row][column] = [r,g,b]                    
+            
+    		#convert it back to an image from an array
+			result = PIL.Image.fromarray(np.uint8(img))            
+            
+			'''Show the image data'''
+			# Create figure with 1 subplot
+			fig, ax = plt.subplots(1, 1)
+			# Show the image data in a subplot
+			ax.imshow(img, interpolation='none')
+			# Show the figure on the screen
+			fig.show()     </p>
+	 </body>
